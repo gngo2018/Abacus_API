@@ -1,5 +1,6 @@
 const userController = require("../controllers/usercontroller");
 const companyController = require("../controllers/companycontroller");
+const propertyController = require("../controllers/propertycontroller");
 
 module.exports = app => {
   app.get("/api", (req, res) => {
@@ -8,7 +9,7 @@ module.exports = app => {
     });
   });
 
-  //User
+  //Users
   app.get("/api/users", userController.getAllUsers);
   app.get("/api/users/:userId", userController.getUserById);
   app.get("/api/users/company/:companyId", userController.getAllUsersByCompanyId);
@@ -17,13 +18,17 @@ module.exports = app => {
   app.put("/api/user/:userId", userController.update);
   app.delete("/api/users/:userId", userController.delete);
 
-  
-  //Company
+  //Companies
   app.get("/api/companies", companyController.getAllCompanies);
   app.get("/api/company/:companyId", companyController.getCompanyById);
   app.post("/api/company/create", companyController.create);
   app.put("/api/company/:companyId", companyController.update);
   app.delete("/api/company/:companyId", companyController.delete);
-  //TODO:
-  // app.get("/api/:userId/companies", companyController.getAllPostsOfUser)
+
+  //Properties
+  app.get("/api/properties", propertyController.getAllProperties);
+  app.get("/api/property/:propertyId", propertyController.getPropertyById);
+  app.post("/api/property/create", propertyController.create);
+  app.put("/api/property/:propertyId", propertyController.update);
+  app.delete("/api/property/:propertyId", propertyController.delete);
 }

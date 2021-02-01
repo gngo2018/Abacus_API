@@ -1,4 +1,4 @@
-const Company = require("../models").company
+const Company = require("../models").companies
 
 module.exports = {
   async getAllCompanies(req, res){
@@ -28,7 +28,7 @@ module.exports = {
   async create(req, res) {
     try {
       const company = await Company.create({
-        company_name: req.body.companyName,
+        name: req.body.name,
       });
       res.status(201).send(company);
     } 
@@ -46,7 +46,7 @@ module.exports = {
       });
       if (company) {
         const updatedCompany = await company.update({
-          company_name: req.body.companyName,
+          name: req.body.name,
         });
         res.status(200).send(updatedCompany);
       } 

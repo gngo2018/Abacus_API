@@ -1,7 +1,7 @@
 //Company Schema
 module.exports = (sequelize, DataTypes) => {
-    let company = sequelize.define("company", {
-      company_name: DataTypes.STRING,
+    let company = sequelize.define("companies", {
+      name: DataTypes.STRING,
       createdAt: { type: DataTypes.DATE, field: 'created_at' },
       updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
     },
@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         company.hasMany(models.users, {
             foreignKey: "company_id",
             as: "users",
-          })
+          });
+        company.hasMany(models.properties,{
+            foreignKey:"company_id",
+            as: "properties",
+        });
     }
     return company
   }
