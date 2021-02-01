@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let User = sequelize.define("users", {
+    let user = sequelize.define("users", {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       first_name: DataTypes.STRING,
@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       freezeTableName: true
     });
-    User.associate = function(models) {
-      User.belongsTo(models.company, {
+    user.associate = function(models) {
+      user.belongsTo(models.companies, {
         foreignKey: "company_id",
-      })
+      });
     }
-    return User
+    return user
   }
