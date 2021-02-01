@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             as: "users",
           });
         company.hasMany(models.properties,{
-            foreignKey:"property_id",
+            foreignKey:"company_id",
             as: "properties",
         });
     }
